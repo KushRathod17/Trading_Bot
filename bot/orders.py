@@ -1,10 +1,4 @@
-"""
-orders.py
-~~~~~~~~~
-Order-placement logic layer.
-Translates validated user intent into Binance API calls and formats results
-for human-readable output.  Never performs I/O or argparse directly.
-"""
+
 
 from __future__ import annotations
 
@@ -17,13 +11,11 @@ from .client import BinanceClient, BinanceAPIError, NetworkError
 logger = logging.getLogger("trading_bot.orders")
 
 
-# ── Result dataclass (plain dict for simplicity) ─────────────────────────────
 
 def _build_result(success: bool, summary: str, raw: Optional[Dict] = None) -> Dict[str, Any]:
     return {"success": success, "summary": summary, "raw": raw or {}}
 
 
-# ── Order builders ────────────────────────────────────────────────────────────
 
 def place_market_order(
     client: BinanceClient,
@@ -106,7 +98,6 @@ def place_stop_market_order(
         return _build_result(False, str(exc))
 
 
-# ── Formatting helpers ────────────────────────────────────────────────────────
 
 def _format_order_response(resp: Dict[str, Any]) -> str:
     """Return a clean, readable string from a raw Binance order response."""
