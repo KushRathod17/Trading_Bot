@@ -1,0 +1,10 @@
+2026-06-01 12:50:29 | INFO     | trading_bot | Logger initialised — log file: logs\trading_bot_20260601_125029.log
+2026-06-01 12:50:29 | INFO     | trading_bot | Order request → symbol=BTCUSDT side=BUY type=STOP_MARKET qty=0.01 price=None stop_price=95000
+2026-06-01 12:50:29 | INFO     | trading_bot.client | BinanceClient initialised (base URL: https://testnet.binancefuture.com)
+2026-06-01 12:50:29 | INFO     | trading_bot.orders | [STOP_MARKET] BUY BTCUSDT qty=0.01 stopPrice=95000
+2026-06-01 12:50:29 | INFO     | trading_bot.client | Placing order → symbol=BTCUSDT side=BUY type=STOP_MARKET qty=0.01 price=N/A
+2026-06-01 12:50:29 | DEBUG    | trading_bot.client | → POST https://testnet.binancefuture.com/fapi/v1/order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'STOP_MARKET', 'quantity': '0.01', 'stopPrice': '95000', 'timestamp': 1780298429289, 'signature': '968842cec6259e8f9e1fadd10637266e7dae954e87076179848ea9e332db3e11'}
+2026-06-01 12:50:29 | DEBUG    | trading_bot.client | ← HTTP 400 | body: {"code":-4120,"msg":"Order type not supported for this endpoint. Please use the Algo Order API endpoints instead."}
+2026-06-01 12:50:29 | ERROR    | trading_bot.client | API error [-4120]: Order type not supported for this endpoint. Please use the Algo Order API endpoints instead.
+2026-06-01 12:50:29 | ERROR    | trading_bot.orders | [STOP_MARKET] Order failed: Binance API Error [-4120]: Order type not supported for this endpoint. Please use the Algo Order API endpoints instead.
+2026-06-01 12:50:29 | ERROR    | trading_bot | Order failed. Reason: Binance API Error [-4120]: Order type not supported for this endpoint. Please use the Algo Order API endpoints instead.

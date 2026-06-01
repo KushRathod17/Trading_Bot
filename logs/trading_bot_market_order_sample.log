@@ -1,0 +1,7 @@
+2025-07-10 14:22:01 | INFO     | trading_bot | Logger initialised — log file: logs/trading_bot_20250710_142201.log
+2025-07-10 14:22:01 | INFO     | trading_bot.client | BinanceClient initialised (base URL: https://testnet.binancefuture.com)
+2025-07-10 14:22:01 | INFO     | trading_bot.orders | [MARKET] BUY BTCUSDT qty=0.01
+2025-07-10 14:22:01 | DEBUG    | trading_bot.client | → POST https://testnet.binancefuture.com/fapi/v1/order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.01', 'timestamp': 1720618921453, 'signature': 'a3f...redacted'}
+2025-07-10 14:22:02 | DEBUG    | trading_bot.client | ← HTTP 200 | body: {"orderId":4751823901,"symbol":"BTCUSDT","status":"FILLED","clientOrderId":"x-Cb7ytekJe14c5d43a","price":"0","avgPrice":"65312.40000","origQty":"0.01","executedQty":"0.01","cumQuote":"653.12","timeInForce":"GTC","type":"MARKET","side":"BUY"}
+2025-07-10 14:22:02 | INFO     | trading_bot.orders | [MARKET] Order accepted — orderId=4751823901 status=FILLED
+2025-07-10 14:22:02 | INFO     | trading_bot | Order placed successfully. Raw response: {'orderId': 4751823901, 'symbol': 'BTCUSDT', 'status': 'FILLED', 'clientOrderId': 'x-Cb7ytekJe14c5d43a', 'price': '0', 'avgPrice': '65312.40000', 'origQty': '0.01', 'executedQty': '0.01', 'cumQuote': '653.12', 'timeInForce': 'GTC', 'type': 'MARKET', 'side': 'BUY'}

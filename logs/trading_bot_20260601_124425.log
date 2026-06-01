@@ -1,0 +1,2 @@
+2026-06-01 12:44:25 | INFO     | trading_bot | Logger initialised — log file: logs\trading_bot_20260601_124425.log
+2026-06-01 12:44:25 | ERROR    | trading_bot | Validation failed: Price is required for LIMIT orders.
