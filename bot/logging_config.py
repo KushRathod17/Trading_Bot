@@ -16,7 +16,6 @@ def setup_logger(name: str = "trading_bot", log_dir: str = "logs") -> logging.Lo
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
 
-    # Avoid adding duplicate handlers if logger is reused
     if logger.handlers:
         return logger
 
@@ -25,12 +24,10 @@ def setup_logger(name: str = "trading_bot", log_dir: str = "logs") -> logging.Lo
         datefmt="%Y-%m-%d %H:%M:%S",
     )
 
-    # ── File handler (DEBUG and above) ──────────────────────────────────────
     fh = logging.FileHandler(log_file, encoding="utf-8")
     fh.setLevel(logging.DEBUG)
     fh.setFormatter(fmt)
 
-    # ── Console handler (INFO and above) ────────────────────────────────────
     ch = logging.StreamHandler()
     ch.setLevel(logging.INFO)
     ch.setFormatter(fmt)
