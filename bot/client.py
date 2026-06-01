@@ -1,10 +1,4 @@
-"""
-client.py
-~~~~~~~~~
-Low-level Binance Futures Testnet REST client.
-Handles authentication (HMAC-SHA256), request signing, and raw HTTP calls.
-All API communication is isolated here — higher layers never touch requests directly.
-"""
+
 
 from __future__ import annotations
 
@@ -21,7 +15,6 @@ logger = logging.getLogger("trading_bot.client")
 
 BASE_URL = "https://testnet.binancefuture.com"
 
-# Endpoints
 EP_NEW_ORDER = "/fapi/v1/order"
 EP_ACCOUNT   = "/fapi/v2/account"
 EP_EXCHANGE_INFO = "/fapi/v1/exchangeInfo"
@@ -67,7 +60,7 @@ class BinanceClient:
         )
         logger.info("BinanceClient initialised (base URL: %s)", BASE_URL)
 
-    # ── Private helpers ───────────────────────────────────────────────────────
+   
 
     def _sign(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Append server timestamp and HMAC-SHA256 signature to params dict."""
@@ -88,14 +81,7 @@ class BinanceClient:
         params: Optional[Dict[str, Any]] = None,
         signed: bool = False,
     ) -> Dict[str, Any]:
-        """
-        Execute an HTTP request and return the parsed JSON body.
-
-        Raises
-        ------
-        BinanceAPIError  – non-2xx API responses with a Binance error code.
-        NetworkError     – connection / timeout issues.
-        """
+        
         params = params or {}
         if signed:
             params = self._sign(params)
@@ -130,7 +116,7 @@ class BinanceClient:
 
         return data
 
-    # ── Public API methods ────────────────────────────────────────────────────
+  
 
     def place_order(self, **kwargs: Any) -> Dict[str, Any]:
         """
