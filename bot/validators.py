@@ -1,28 +1,19 @@
-"""
-validators.py
-~~~~~~~~~~~~~
-All user-input validation lives here so the CLI and other entry points
-share a single source of truth.
-"""
+
 
 from __future__ import annotations
 
 from decimal import Decimal, InvalidOperation
 from typing import Optional
 
-# ── Constants ────────────────────────────────────────────────────────────────
 
 VALID_SIDES = {"BUY", "SELL"}
 VALID_ORDER_TYPES = {"MARKET", "LIMIT", "STOP_MARKET"}
 
 
-# ── Exceptions ───────────────────────────────────────────────────────────────
-
 class ValidationError(ValueError):
     """Raised when user-supplied input fails validation."""
 
 
-# ── Validators ───────────────────────────────────────────────────────────────
 
 def validate_symbol(symbol: str) -> str:
     """Return upper-cased symbol or raise ValidationError."""
