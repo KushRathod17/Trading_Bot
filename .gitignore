@@ -1,7 +1,6 @@
-# Environment / secrets
+
 .env
 
-# Python
 __pycache__/
 *.py[cod]
 *.pyo
@@ -11,10 +10,8 @@ venv/
 dist/
 build/
 
-# Logs (keep samples, ignore auto-generated)
 logs/trading_bot_2*.log
 
-# IDE
 .idea/
 .vscode/
 *.swp
