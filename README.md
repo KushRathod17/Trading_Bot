@@ -13,24 +13,16 @@ A Python CLI tool to place orders on Binance Futures Testnet (USDT-M). Built as 
 - Handles bad inputs and API errors cleanly
 
 ---
-
 ## Project Structure
 
-```
-trading_bot/
-├── bot/
-│   ├── client.py          # handles API calls and request signing
-│   ├── orders.py          # market, limit, stop order logic
-│   ├── validators.py      # checks user input before sending anything
-│   ├── logging_config.py  # sets up file + console logging
-│   └── cli.py             # entry point, reads CLI args
-├── logs/                  # log files get saved here automatically
-├── .env.example           # copy this to .env and add your keys
-├── requirements.txt
-└── README.md
-```
+pretty standard layout, kept it simple:
 
----
+- `bot/client.py` - all the binance API stuff, signing requests etc
+- `bot/orders.py` - market, limit and stop order functions
+- `bot/validators.py` - input checks before anything gets sent
+- `bot/logging_config.py` - logging setup
+- `bot/cli.py` - main entry point, run this
+- `logs/` - log files go here after each run
 
 ## Setup
 
