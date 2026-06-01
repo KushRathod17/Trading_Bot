@@ -1,10 +1,4 @@
-"""
-cli.py
-~~~~~~
-Command-line interface entry point.
-Parses arguments, validates inputs, calls the orders layer, and prints results.
-This module only handles I/O — no business logic lives here.
-"""
+
 
 from __future__ import annotations
 
@@ -27,14 +21,7 @@ from .validators import (
     validate_symbol,
 )
 
-# ── Banner ────────────────────────────────────────────────────────────────────
 
-BANNER = r"""
-╔══════════════════════════════════════════════╗
-║       Binance Futures Testnet Trading Bot    ║
-║              USDT-M Perpetuals               ║
-╚══════════════════════════════════════════════╝
-"""
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -111,11 +98,9 @@ def main() -> None:
     logger = setup_logger()
     print(BANNER)
 
-    # ── Parse CLI arguments ──────────────────────────────────────────────────
     parser = _build_parser()
     args = parser.parse_args()
 
-    # ── Validate inputs ──────────────────────────────────────────────────────
     try:
         symbol     = validate_symbol(args.symbol)
         side       = validate_side(args.side)
@@ -128,7 +113,6 @@ def main() -> None:
         logger.error("Validation failed: %s", exc)
         sys.exit(1)
 
-    # ── Print order request summary ──────────────────────────────────────────
     print("  ORDER REQUEST SUMMARY")
     print("─" * 50)
     print(f"  Symbol     : {symbol}")
@@ -146,7 +130,6 @@ def main() -> None:
         symbol, side, order_type, quantity, price, stop_price,
     )
 
-    # ── Load credentials from environment ────────────────────────────────────
     api_key    = os.getenv("BINANCE_API_KEY", "").strip()
     api_secret = os.getenv("BINANCE_API_SECRET", "").strip()
 
@@ -155,14 +138,12 @@ def main() -> None:
         logger.error("Missing API credentials in environment.")
         sys.exit(1)
 
-    # ── Initialise client ────────────────────────────────────────────────────
     try:
         client = BinanceClient(api_key=api_key, api_secret=api_secret)
     except ValueError as exc:
         print(f"\n[ERROR] {exc}\n")
         sys.exit(1)
 
-    # ── Dispatch to appropriate order function ───────────────────────────────
     print("\n  Submitting order to Binance Futures Testnet …\n")
 
     if order_type == "MARKET":
@@ -172,7 +153,7 @@ def main() -> None:
     else:  # STOP_MARKET
         result = place_stop_market_order(client, symbol, side, quantity, stop_price)
 
-    # ── Print result ─────────────────────────────────────────────────────────
+  
     if result["success"]:
         print(result["summary"])
         print("\n  ✅  Order placed successfully!\n")
